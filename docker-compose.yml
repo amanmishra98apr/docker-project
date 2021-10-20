@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  hello-node1:
+    image: hello-node1
+    ports:
+      - "5000:5000"
+    restart: always
+    networks:
+      - node-compose-network
+
+  hello-node2:
+    image: hello-node2
+    ports:
+      - "5001:5001"
+    restart: always
+    # environment:
+    #   CURRENCY_EXCHANGE_SERVICE_HOST: http://currency-exchange
+    # depends_on:
+    #   - currency-exchange
+    networks:
+      - node-compose-network
+  
+# Networks to be created to facilitate communication between containers
+networks:
+  node-compose-network:
